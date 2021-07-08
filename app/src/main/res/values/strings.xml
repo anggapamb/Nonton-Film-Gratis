@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Nonton Film Gratis</string>
+    <string name="this_splashscreen">this SplashScreen</string>
+    <string name="masukan_judul">Masukan judul..</string>
+    <string name="new_upload">New Upload:</string>
+    <string name="raya_and_the_last_dragon_2021">Raya and the Last Dragon (2021)</string>
+    <string name="_7_4">7.4</string>
+    <string name="tanda_tanya">/?/</string>
+    <string name="yo_hallo">Yo hallo !!!</string>
+    <string name="bila_ada_pertanyaan_silahkan_menghubungi_developer">Bila ada pertanyaan silahkan menghubungi developer...</string>
+    <string name="angga_pambudi_setiawan">Angga Pambudi Setiawan</string>
+    <string name="filter">Filter</string>
+    <string name="movie_yang_akan_tayang">Movie yang akan tayang :</string>
+    <string name="comingsoon">Comingsoon</string>
+    <string name="tv_series">TV Series :</string>
+    <string name="tv_series__">TV Series</string>
+    <string name="movie_berdasarkan_tahun">Movie berdasarkan tahun :</string>
+    <string name="_2015">2015</string>
+    <string name="_2017">2017</string>
+    <string name="no_data">No data</string>
+</resources>
