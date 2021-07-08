@@ -48,7 +48,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
         setViewHome()
 
-
     }
 
     private fun setViewHome() {
