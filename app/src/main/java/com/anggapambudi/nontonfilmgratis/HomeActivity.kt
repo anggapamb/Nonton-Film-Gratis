@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +32,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnFilter: ImageView
     private lateinit var editJudul: EditText
     private lateinit var tvRecyclerView: RecyclerView
-    private lateinit var iconSearch: ImageView
+    private lateinit var iconSearch: TextView
     private lateinit var gambarIcon: ImageView
     private val data = ArrayList<ResultItem>()
 
@@ -52,12 +53,157 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setViewHome() {
         val getFilm = intent.getStringExtra("KEY_FILM_FILTER")
+        val comingSoon = "comingsoon"
+        val tvSeries = "tv"
+        val genres1 = "animation"
+        val genres2 = "action"
+        val genres3 = "horror"
+        val genres4 = "romance"
+        val genres5 = "thriller"
+        val genres6 = "adventure"
+        val genres7 = "drama"
+        val genres8 = "fantasy"
+        val genres9 = "family"
+        val genres10 = "history"
 
         if (getFilm == null) {
             newUpload()
-        } else {
+        } else if (getFilm == comingSoon || getFilm == tvSeries) {
             setFilm()
+        } else if (getFilm == genres1 ||
+                getFilm == genres2 ||
+                getFilm == genres3 ||
+                getFilm == genres4 ||
+                getFilm == genres5 ||
+                getFilm == genres6 ||
+                getFilm == genres7 ||
+                getFilm == genres8 ||
+                getFilm == genres9 ||
+                getFilm == genres10) {
+            setFilmGenreFilter()
+        } else {
+            setFilmNegaraFilter()
         }
+    }
+
+    private fun setFilmNegaraFilter() {
+        val getFilm = intent.getStringExtra("KEY_FILM_FILTER")
+
+        //progressdialog
+        val progressDialog = ProgressDialog(this@HomeActivity)
+        progressDialog.setCancelable(false)
+        progressDialog.setMessage("$getFilm...")
+        progressDialog.show()
+
+        ApiService.instance.getSearchNegara("$getFilm").enqueue(object : Callback<ItemFilmResponse> {
+            override fun onResponse(call: Call<ItemFilmResponse>, response: Response<ItemFilmResponse>) {
+                progressDialog.dismiss()
+                data.clear()
+
+                val result = response.body()?.result
+                result?.let { data.addAll(it) }
+
+                tvRecyclerView.layoutManager = GridLayoutManager(this@HomeActivity, 3)
+                tvRecyclerView.adapter = ItemFilmAdapter(data)
+                longToast("$getFilm")
+
+                if (data.isEmpty()) {
+                    toast("No data")
+                    viewNoData.visibility = View.VISIBLE
+                    tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
+                }
+
+            }
+
+            override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
+                longToast("Oops, internet anda bermasalah!")
+                progressDialog.dismiss()
+            }
+
+        })
+    }
+
+    private fun setFilmGenreFilter() {
+        val getFilm = intent.getStringExtra("KEY_FILM_FILTER")
+
+        //progressdialog
+        val progressDialog = ProgressDialog(this@HomeActivity)
+        progressDialog.setCancelable(false)
+        progressDialog.setMessage("$getFilm...")
+        progressDialog.show()
+
+        ApiService.instance.getSearchGenre("$getFilm").enqueue(object : Callback<ItemFilmResponse> {
+            override fun onResponse(call: Call<ItemFilmResponse>, response: Response<ItemFilmResponse>) {
+                progressDialog.dismiss()
+                data.clear()
+
+                val result = response.body()?.result
+                result?.let { data.addAll(it) }
+
+                tvRecyclerView.layoutManager = GridLayoutManager(this@HomeActivity, 3)
+                tvRecyclerView.adapter = ItemFilmAdapter(data)
+                longToast("$getFilm")
+
+                if (data.isEmpty()) {
+                    toast("No data")
+                    viewNoData.visibility = View.VISIBLE
+                    tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
+                }
+
+            }
+
+            override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
+                longToast("Oops, internet anda bermasalah!")
+                progressDialog.dismiss()
+            }
+
+        })
+    }
+
+    private fun setFilmTahunFilter() {
+        val getFilm = intent.getStringExtra("KEY_FILM_FILTER")
+
+        //progressdialog
+        val progressDialog = ProgressDialog(this@HomeActivity)
+        progressDialog.setCancelable(false)
+        progressDialog.setMessage("$getFilm...")
+        progressDialog.show()
+
+        ApiService.instance.getSearchTahun("$getFilm").enqueue(object : Callback<ItemFilmResponse> {
+            override fun onResponse(call: Call<ItemFilmResponse>, response: Response<ItemFilmResponse>) {
+                progressDialog.dismiss()
+                data.clear()
+
+                val result = response.body()?.result
+                result?.let { data.addAll(it) }
+
+                tvRecyclerView.layoutManager = GridLayoutManager(this@HomeActivity, 3)
+                tvRecyclerView.adapter = ItemFilmAdapter(data)
+                longToast("$getFilm")
+
+                if (data.isEmpty()) {
+                    toast("No data")
+                    viewNoData.visibility = View.VISIBLE
+                    tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
+                }
+
+            }
+
+            override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
+                longToast("Oops, internet anda bermasalah!")
+                progressDialog.dismiss()
+            }
+
+        })
     }
 
     private fun setFilm() {
@@ -85,12 +231,15 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                     toast("No data")
                     viewNoData.visibility = View.VISIBLE
                     tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
                 }
 
             }
 
             override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
-                toast("Oops, internet anda bermasalah!")
+                longToast("Oops, internet anda bermasalah!")
                 progressDialog.dismiss()
             }
 
@@ -120,12 +269,15 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                     toast("No data")
                     viewNoData.visibility = View.VISIBLE
                     tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
                 }
 
             }
 
             override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
-                toast("Oops, internet anda bermasalah!")
+                longToast("Oops, internet anda bermasalah!")
                 progressDialog.dismiss()
             }
 
@@ -159,12 +311,15 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                     toast("Film dengan judul $searchFilmResponse tidak tersedia !!!")
                     viewNoData.visibility = View.VISIBLE
                     tvRecyclerView.visibility = View.GONE
+                } else {
+                    viewNoData.visibility = View.GONE
+                    tvRecyclerView.visibility = View.VISIBLE
                 }
 
             }
 
             override fun onFailure(call: Call<ItemFilmResponse>, t: Throwable) {
-                toast("Oops, internet anda bermasalah!")
+                longToast("Oops, internet anda bermasalah!")
                 progressDialog.dismiss()
             }
 

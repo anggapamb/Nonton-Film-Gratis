@@ -21,4 +21,19 @@ interface ApiEndPoint {
         @Path("filter") filter: String
     ): Call<ItemFilmResponse>
 
+    @GET("year?")
+    fun getSearchTahun(
+            @Query("year") searchTahun: String
+    ): Call<ItemFilmResponse>
+
+    @GET("country?")
+    fun getSearchNegara(
+            @Query("country") searchNegara: String
+    ): Call<ItemFilmResponse>
+
+    @GET("genre?")
+    fun getSearchGenre(
+            @Query("genre") searchGenre: String
+    ): Call<ItemFilmResponse>
+
 }

@@ -27,6 +27,8 @@ class ItemFilmAdapter(private val item: ArrayList<ResultItem>):
                 tvRating.text = "?"
             }
 
+            //put extra neng kene, ke detailFilmActivity
+
         }
 
     }

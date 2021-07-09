@@ -10,14 +10,14 @@
         android:orientation="vertical">
 
         <View
-            android:layout_width="@dimen/_60sdp"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_2sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@android:color/darker_gray"/>
 
         <View
-            android:layout_width="@dimen/_60sdp"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_2sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_5sdp"
@@ -78,6 +78,7 @@
             android:layout_height="wrap_content"
             android:text="@string/movie_berdasarkan_tahun"
             android:textSize="@dimen/_13ssp"
+            android:visibility="gone"
             android:textColor="@color/blackColorImporv"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_16sdp"
@@ -88,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_25sdp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <LinearLayout
@@ -96,6 +98,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btn2015"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/_2015"
@@ -105,6 +108,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btn2016"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="2016"
@@ -116,6 +120,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btn2017"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/_2017"
@@ -132,6 +137,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btn2018"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="2018"
@@ -141,6 +147,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btn2019"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="2019"
@@ -152,6 +159,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btn2020"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="2020"
@@ -169,18 +177,21 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/editTahunFiter"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_weight="3"
                     android:hint="Tuliskan tahun.."
                     android:textAlignment="center"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:textColor="@color/blackColorImporv"
                     android:textColorHint="@color/blackColorImporv"
                     android:background="@drawable/background_edittext_filter"/>
 
                 <Button
+                    android:id="@+id/btnSearchTahun"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:text="🔍"
@@ -216,6 +227,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnIndonesia"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Indonesia"
@@ -225,6 +237,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnJapan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Japan"
@@ -242,6 +255,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnKorea"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Korea"
@@ -251,6 +265,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnThailand"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Thailand"
@@ -269,6 +284,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/editNegara"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_weight="3"
@@ -281,6 +297,7 @@
                     android:background="@drawable/background_edittext_filter"/>
 
                 <Button
+                    android:id="@+id/btnSearchNegara"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:text="🔍"
@@ -317,6 +334,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnAnimation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Animation"
@@ -326,9 +344,10 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnHorror"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Comedy"
+                    android:text="Horror"
                     android:layout_weight="1"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:backgroundTint="@color/greyColor"
@@ -343,6 +362,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnAction"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Action"
@@ -352,6 +372,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnRomance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Romance"
@@ -369,6 +390,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnAdventure"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Adventure"
@@ -378,6 +400,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnFamily"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Family"
@@ -395,6 +418,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnFantasy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Fantasy"
@@ -404,6 +428,7 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnDrama"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Drama"
@@ -421,6 +446,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnHistory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="History"
@@ -430,35 +456,10 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:id="@+id/btnThriller"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Thriller"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:backgroundTint="@color/greyColor"
-                    android:textColor="@color/blackColorImporv"
-                    android:textAllCaps="false" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sci-Fi"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/greyColor"
-                    android:textColor="@color/blackColorImporv"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Horror"
                     android:layout_weight="1"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:backgroundTint="@color/greyColor"
